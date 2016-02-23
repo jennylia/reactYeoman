@@ -1,16 +1,23 @@
 var React = require('react');
+var Button = require('react-bootstrap').Button;
+var Well = require('react-bootstrap').Well;
+var ImageGrid = require('./imagegrid');
+var ImageActions = require('../actions/imageActions');
 
 var Home = React.createClass({
 
   render: function() {
-
     return (
-      <div className="hero-unit">
-        <h1>'Allo, 'Allo!</h1>
-        <p>You now have</p>
-        <ul>
-            <li>ReactJS Reflux Boilerplate</li>
-        </ul>
+      <div className="container">
+        <Well>
+          <Button bsStyle='primary' onClick={ImageActions.fetchList}>Fetch new images please</Button>
+          <Well>
+            <a href="https://github.com/ochronus/reflux-example">Source @ GitHub</a>
+          </Well>
+        </Well>
+        <Well>
+          <ImageGrid></ImageGrid>
+        </Well>
       </div>
     );
   }
