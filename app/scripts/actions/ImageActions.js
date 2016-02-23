@@ -1,7 +1,7 @@
 var Reflux = require('reflux');
 
 var ImageactionsActions = Reflux.createActions([
-  'queryAll'
+  'fetchList'
   // Here you can list your actions
 ]);
 
