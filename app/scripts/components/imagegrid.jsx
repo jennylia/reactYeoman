@@ -13,7 +13,6 @@ var ImageGrid = React.createClass({
       return (
         <Row>
 
-          <h1>Jenny</h1>
           {this.state.imagestore.map(function (image) {
             return (
               <Col xs={6} sm={4} lg={3}>

@@ -10,9 +10,10 @@ var Home = React.createClass({
     return (
       <div className="container">
         <Well>
-          <Button bsStyle='primary' onClick={ImageActions.fetchList}>Fetch new images please</Button>
+
+          <h1>Travel Journal</h1>
+          <Button bsStyle='primary' onClick={ImageActions.fetchList}>More Photos</Button>
           <Well>
-            <a href="https://github.com/ochronus/reflux-example">Source @ GitHub</a>
           </Well>
         </Well>
         <Well>

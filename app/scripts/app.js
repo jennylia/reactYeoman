@@ -3,6 +3,6 @@ var ImageActions = require('./actions/imageActions');
 
 setInterval(function() {
   ImageActions.fetchList();
-}, 5000);
+}, 30000);
 
 Router.start();
