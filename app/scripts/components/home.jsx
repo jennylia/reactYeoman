@@ -7,27 +7,27 @@ var ImageActions = require('../actions/imageActions');
 
 var Home = React.createClass({
 
-  //getInitialState(){
-  //
-  //  // Extract the favorite locations from local storage
-  //
-  //  var favorites = [];
-  //
-  //  if(localStorage.favorites){
-  //    favorites = JSON.parse(localStorage.favorites);
-  //  }
-  //
-  //  // Nobody would get mad if we center it on Paris by default
-  //
-  //  return {
-  //    favorites: favorites,
-  //    currentAddress: 'Paris, France',
-  //    mapCoordinates: {
-  //      lat: 48.856614,
-  //      lng: 2.3522219
-  //    }
-  //  };
-  //},
+  getInitialState(){
+
+    // Extract the favorite locations from local storage
+
+    var favorites = [];
+
+    if(localStorage.favorites){
+      favorites = JSON.parse(localStorage.favorites);
+    }
+
+    // Nobody would get mad if we center it on Paris by default
+
+    return {
+      favorites: favorites,
+      currentAddress: 'Paris, France',
+      mapCoordinates: {
+        lat: 48.856614,
+        lng: 2.3522219
+      }
+    };
+  },
 
   render: function() {
     return (
@@ -37,7 +37,8 @@ var Home = React.createClass({
           <h1>Travel Journal</h1>
           <Button bsStyle='primary' onClick={ImageActions.fetchList}>More Photos</Button>
           <Well>
-            <Map></Map>
+            <Map lat={this.state.mapCoordinates.lat} lng={this.state.mapCoordinates.lng} />
+
           </Well>
         </Well>
 

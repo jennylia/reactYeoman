@@ -21,13 +21,13 @@ var Map = React.createClass({
 
    Use this as an opportunity to operate on the DOM when the component has been updated.*/
   componentDidUpdate: function () {
-    //if (this.lastLat == this.props.lat && this.lastLng == this.props.lng) {
-    //  //No need to reinitialize
-    //  return;
-    //}
-    ////update the last location
-    //this.lastLat = this.props.lastLat;
-    //this.lastLng = this.props.lng;
+    if (this.lastLat == this.props.lat && this.lastLng == this.props.lng) {
+      //No need to reinitialize
+      return;
+    }
+    //update the last location
+    this.lastLat = this.props.lastLat;
+    this.lastLng = this.props.lng;
 
     //Paris:
     //lat: 48.856614,
@@ -38,10 +38,10 @@ var Map = React.createClass({
       lng:2.3522219
     });
 
-    //map.addMarker({
-    //  lat: this.props.lat,
-    //  lng: this.props.lng
-    //});
+    map.addMarker({
+      lat: this.props.lat,
+      lng: this.props.lng
+    });
   },
   render: function () {
     /*Leaving it like this is the start, the css made a beautiful box for the map*/
