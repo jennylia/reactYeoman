@@ -1,12 +1,19 @@
 var React = require('react');
 var Button = require('react-bootstrap').Button;
 var Well = require('react-bootstrap').Well;
+var Nav = require('react-bootstrap').Nav;
+var NavItem = require('react-bootstrap').NavItem;
+var Navbar = require('react-bootstrap').Navbar;
+var NavDropdown = require('react-bootstrap').DropdownMenu;
+var MenuItem = require('react-bootstrap').MenuItem;
+
 var ImageGrid = require('./imagegrid');
 var Map = require('./map');
 var ImageActions = require('../actions/imageActions');
 var CurrentLocation = require('./currentlocation');
 var Search = require('./search');
 var LocationList = require('./locationlist');
+
 var Home = React.createClass({
 
   getInitialState(){
@@ -132,7 +139,17 @@ var Home = React.createClass({
   //onFavoriteToggle is a prop for CurrentLocation, and it uses toggleFavorite
   render: function () {
     return (
+
       <div className="container">
+        <Navbar>
+          <Nav activeKey={1}>
+            <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
+            <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
+            <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+          </Nav>
+        </Navbar>
+
+
         <Well>
 
           <h1>Travel Journal</h1>
