@@ -4,7 +4,7 @@ var Currentlocation = React.createClass({
 
   toggleFavorite(){
     console.log("I got clicked");
-    this.props.onFavoriteToggle(this.props.address);
+    this.props.onFavoriteToggle(this.props.address); // use the method onFavoriteToggle from the home.jsx class that was passed in as the property
   },
 
 

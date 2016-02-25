@@ -5,6 +5,7 @@ var ImageGrid = require('./imagegrid');
 var Map = require('./map');
 var ImageActions = require('../actions/imageActions');
 var CurrentLocation = require('./currentlocation');
+var Search = require('./search');
 var Home = React.createClass({
 
   getInitialState(){
@@ -23,7 +24,7 @@ var Home = React.createClass({
       favorites: favorites,
       currentAddress: 'Paris, France',
       mapCoordinates: {
-        lat: 48.856614,f
+        lat: 48.856614,
         lng: 2.3522219
       }
     };
@@ -94,6 +95,12 @@ var Home = React.createClass({
 
   },
 
+  //this is just a function to test the functions are properly passed as properties
+  sayHi: function(){
+    alert('hi');
+  },
+
+  //onFavoriteToggle is a prop for CurrentLocation, and it uses toggleFavorite
   render: function () {
     return (
       <div className="container">
@@ -102,10 +109,12 @@ var Home = React.createClass({
           <h1>Travel Journal</h1>
           <Button bsStyle='primary' onClick={ImageActions.fetchList}>More Photos</Button>
           <Well>
+            <Search sayHi = {this.sayHi}></Search>
             <Map lat={this.state.mapCoordinates.lat} lng={this.state.mapCoordinates.lng}/>
             <CurrentLocation address={this.state.currentAddress}
                              favorite={this.isAddressInFavorites(this.state.currentAddress)}
                              onFavoriteToggle={this.toggleFavorite}/>
+
           </Well>
         </Well>
 
