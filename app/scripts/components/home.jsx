@@ -65,7 +65,7 @@ var Home = React.createClass({
       }
     }
     //the index is i, now we should splic it
-    if (index !== -1){
+    if (index !== -1) {
       favorites.splice(index, 1);
 
       //do a little update
@@ -96,8 +96,36 @@ var Home = React.createClass({
   },
 
   //this is just a function to test the functions are properly passed as properties
-  sayHi: function(){
+  sayHi: function () {
     alert('hi');
+  },
+
+  searchForAddress: function(address){
+
+    var self = this;
+
+    // We will use GMaps' geocode functionality,
+    // which is built on top of the Google Maps API
+
+    GMaps.geocode({
+      address: address,
+      callback: function(results, status) {
+
+        if (status !== 'OK') return;
+
+        var latlng = results[0].geometry.location;
+
+        self.setState({
+          currentAddress: results[0].formatted_address,
+          mapCoordinates: {
+            lat: latlng.lat(),
+            lng: latlng.lng()
+          }
+        });
+
+      }
+    });
+
   },
 
   //onFavoriteToggle is a prop for CurrentLocation, and it uses toggleFavorite
@@ -109,7 +137,8 @@ var Home = React.createClass({
           <h1>Travel Journal</h1>
           <Button bsStyle='primary' onClick={ImageActions.fetchList}>More Photos</Button>
           <Well>
-            <Search sayHi = {this.sayHi}></Search>
+            <Search onSearch={this.searchForAddress}/>
+
             <Map lat={this.state.mapCoordinates.lat} lng={this.state.mapCoordinates.lng}/>
             <CurrentLocation address={this.state.currentAddress}
                              favorite={this.isAddressInFavorites(this.state.currentAddress)}
