@@ -6,6 +6,7 @@ var Map = require('./map');
 var ImageActions = require('../actions/imageActions');
 var CurrentLocation = require('./currentlocation');
 var Search = require('./search');
+var LocationList = require('./locationlist');
 var Home = React.createClass({
 
   getInitialState(){
@@ -100,7 +101,7 @@ var Home = React.createClass({
     alert('hi');
   },
 
-  searchForAddress: function(address){
+  searchForAddress: function (address) {
 
     var self = this;
 
@@ -109,7 +110,7 @@ var Home = React.createClass({
 
     GMaps.geocode({
       address: address,
-      callback: function(results, status) {
+      callback: function (results, status) {
 
         if (status !== 'OK') return;
 
@@ -143,12 +144,15 @@ var Home = React.createClass({
             <CurrentLocation address={this.state.currentAddress}
                              favorite={this.isAddressInFavorites(this.state.currentAddress)}
                              onFavoriteToggle={this.toggleFavorite}/>
-
+            <LocationList locations={this.state.favorites}
+                          activeLocationAddress={this.state.currentAddress}
+                          onClick={this.searchForAddress}
+            ></LocationList>
           </Well>
         </Well>
 
-        <Well>
 
+        <Well>
           <ImageGrid></ImageGrid>
         </Well>
       </div>
