@@ -26,7 +26,7 @@ var Map = React.createClass({
       return;
     }
     //update the last location
-    this.lastLat = this.props.lastLat;
+    this.lastLat = this.props.lat;
     this.lastLng = this.props.lng;
 
     //Paris:
@@ -34,8 +34,8 @@ var Map = React.createClass({
     //lng: 2.3522219
     var map = new GMaps({
       el: '#map',
-      lat:48.856614,
-      lng:2.3522219
+      lat: this.props.lat,
+      lng: this.props.lng
     });
 
     map.addMarker({
